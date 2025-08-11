@@ -11,7 +11,7 @@ spec:
 #    directory:
 #      exclude: 'service.yml'
 #      include: '{service-account.yml,service.yml}'
-    # recurse: true
+#     recurse: true
     path: application/directoryOfManifests
     repoURL: https://github.com/BenLazregAhmed/argocd.git
     targetRevision: main
