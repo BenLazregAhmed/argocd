@@ -1,0 +1,2 @@
+argocd login <node-@ip>:<argocd-server-node-port> --insecure --grpc-web
+192.168.250.10:8086

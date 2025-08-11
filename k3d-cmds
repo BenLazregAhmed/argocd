@@ -1,0 +1,1 @@
+k3d cluster create k3s-default --api-port 192.168.250.10:6443 --servers 1 --agents 1 -p "8085:30001@server:0" -p "8086:30002@server:0" -p "8088:30001@agent:0" -p "8089:30002@agent:0"
