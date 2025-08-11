@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: nginx-sub-dir
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
   labels:
