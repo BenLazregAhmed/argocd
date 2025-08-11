@@ -21,6 +21,6 @@ spec:
     #      parameters:
     #        - name: "replicaCount"
     #          value: "1"
-    path: v03-argocd-applications/helm/nginx
-    repoURL:
+    path: application/helm/nginx
+    repoURL: https://github.com/BenLazregAhmed/argocd.git
     targetRevision: main
