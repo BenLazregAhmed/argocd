@@ -13,7 +13,7 @@ spec:
     helm:
       releaseName: application-from-helm
       valueFiles:
-        - custom-values.yaml
+        - custom-values.yml
     #      values: |
     #        replicaCount: 3
     #      valuesObject:
