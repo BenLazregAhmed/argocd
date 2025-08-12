@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: project-3
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '' #means v1 by default
+      kind: 'ServiceAccount'
+  destinations:
+    - namespace: '*'
+    #to prevent a namespace use ! example : '!dev'
+      server: '*'
+  sourceRepos:
+    - '*'

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: project-6
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*' #means v1 by default
+      kind: '*'
+  destinations:
+    - namespace: '*'
+    #to prevent a namespace use ! example : '!dev'
+      server: '*'
+  sourceRepos:
+    - '*'
+  roles:
+    - name: read-sync
+      description: "this role is used to read apps"
+      policies:
+        - p, proj:project-6:read-sync, applications, get, project-6/*, allow
+        - p, proj:project-6:read-sync, applications, sync, project-6/*, allow
+        # p, <role>, <resource>, <action>, <object>, <effect>

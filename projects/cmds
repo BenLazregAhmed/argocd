@@ -1,0 +1,2 @@
+token creation :  argocd proj role create-token projectName roleName
+use the token to list apps :  argocd app list --auth-token <generated-token>
