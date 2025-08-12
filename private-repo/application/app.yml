@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: application-from-private-repo
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: helm/nginx
+    repoURL: https://github.com/BenLazregAhmed/argo-tuto-private-repo.git
+    #to use ssh url just past the ssh url in repoURL above , example : git@github.com:BenLazregAhmed/argo-tuto-private-repo.git
+    targetRevision: main
