@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: automated-application
+spec:
+  destination:
+    namespace: automated-sync
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: application/helm/nginx
+    repoURL: https://github.com/BenLazregAhmed/argocd.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
