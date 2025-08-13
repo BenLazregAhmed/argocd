@@ -1,0 +1,13 @@
+priority : sync phases > sync waves > resource kind > resource name
+sync phases:
+1-pre-sync
+2-sync(default)
+3-post-sync , sync-failed
+sync waves:
+an integer (negative or positive)
+default is 0
+the smaller the number is the higher priority
+hook deletion policies :
+HookFailed
+HookSucceeded
+BeforeHookCreation (default) : deletes the old resource before creating the new one of same kind/name
