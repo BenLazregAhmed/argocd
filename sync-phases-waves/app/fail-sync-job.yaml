@@ -3,6 +3,8 @@ kind: Job
 metadata:
   name: fail-sync
   namespace: sync-phases-waves
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
 spec:
   template:
     spec:
