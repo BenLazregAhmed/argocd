@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fail-sync
+  namespace: sync-phases-waves
+spec:
+  template:
+    spec:
+      containers:
+        - name: fail-sync
+          image: python:latest
+          command: [ "python", "-c" ]
+          args: [ "print('sync failed')" ]
+      restartPolicy: Never
+  backoffLimit: 4
+  

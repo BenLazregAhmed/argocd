@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: post-sync
+  namespace: sync-phases-waves
+spec:
+  template:
+    spec:
+      containers:
+        - name: post-sync
+          image: python:latest
+          command: [ "python", "-c" ]
+          args: [ "print('pre job succeeded')" ]
+      restartPolicy: Never
+  backoffLimit: 4
+  
