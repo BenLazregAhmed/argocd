@@ -10,9 +10,9 @@ spec:
     spec:
       containers:
         - name: post-sync
-          image: python:latest
-          command: [ "python", "-c" ]
-          args: [ "print('pre job succeeded')" ]
+          image: alpine:latest
+          command: [ "/bin/sh", "-c" ]
+          args: [ "echo 'pre job succeeded'; exit 0" ]
       restartPolicy: Never
   backoffLimit: 4
   

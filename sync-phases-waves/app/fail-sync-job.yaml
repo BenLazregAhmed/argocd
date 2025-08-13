@@ -11,8 +11,7 @@ spec:
       containers:
         - name: fail-sync
           image: python:latest
-          command: [ "python", "-c" ]
-          args: [ "print('sync failed')" ]
+          command: [ "/bin/sh", "-c" ]
+          args: [ "echo 'pre job failed';exit 0"]
       restartPolicy: Never
-  backoffLimit: 4
-  
+  backoffLimit: 0
