@@ -7,8 +7,10 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookFailed
   namespace: sync-phases-waves
 spec:
+  backoffLimit: 0  # No retries (fail immediately if the check fails)
   template:
     spec:
+      restartPolicy: Never  # Required for Jobs; "Never" or "OnFailure"
       containers:
         - name: health-check
           image: curlimages/curl
@@ -16,5 +18,12 @@ spec:
             - sh
             - -c
             - |
-              curl -s -o /dev/null -w "%{http_code}" "https://httpbin.org/status/200" | grep -q "200" && exit 0 || exit 1
-  backoffLimit: 0
+              # Health check with explicit exit codes
+              code=$(curl -s -o /dev/null -w "%{http_code}" "https://httpbin.org/status/200")
+              if [ "$code" -eq 200 ]; then
+                echo "Health check passed: HTTP $code"
+                exit 0
+              else
+                echo "Health check failed: HTTP $code"
+                exit 1
+              fi
