@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app1
+  name: sync-phases-waves-app
 spec:
   destination:
     namespace: sync-phases-waves
     server: https://kubernetes.default.svc
-  project: project-1
+  project: default
   source:
-    path: app/sync-phases-waves
+    path: sync-phases-waves/app
     repoURL: https://github.com/BenLazregAhmed/argocd.git
     targetRevision: main
   syncPolicy:

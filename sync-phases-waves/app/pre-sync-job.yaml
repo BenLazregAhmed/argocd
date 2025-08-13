@@ -12,7 +12,9 @@ spec:
       containers:
         - name: health-check
           image: curlimages/curl
-          command: ["/bin/sh", "-c"]
-          args: ["if curl -s http://myapp.local:5000 | grep -qi 'running'; then echo 'Demo Application is up and Running'; exit 0; else echo 'Demo Application is NOT accessible'; exit 1; fi"]
-      restartPolicy: Never
+          command:
+            - sh
+            - -c
+            - |
+              curl -s -o /dev/null -w "%{http_code}" "https://httpbin.org/status/200" | grep -q "200" && exit 0 || exit 1
   backoffLimit: 0
