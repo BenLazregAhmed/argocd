@@ -1,0 +1,6 @@
+uses the secrets used to add a cluster to argocd to generate some prameters thet we can use for example :
+name : is the name value under stringData: section in the secret manifest
+namenormalized: is same as name but contains only alphanumerics in lower case and transforms _ to -
+server: is the server value under stringData: section in the secret manifest
+metadata.labels.<label-key-name>
+metadata.annotations.<annotation-key-name>
