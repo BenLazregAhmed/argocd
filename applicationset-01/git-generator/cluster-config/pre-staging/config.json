@@ -1,0 +1,10 @@
+{
+  "cluster": {
+    "owner": "ahmed",
+    "name": "pre-staging",
+    "path": "application/directoryOfManifests",
+    "source_type": "directoryOfManifests",
+    "address": "https://kubernetes.default.svc",
+    "namespace": "pre-staging-ns"
+  }
+}

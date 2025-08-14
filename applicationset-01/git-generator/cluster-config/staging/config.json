@@ -1,0 +1,10 @@
+{
+  "cluster": {
+    "owner": "ahmed",
+    "name": "staging",
+    "path": "application/helm/nginx",
+    "source_type": "helm",
+    "address": "https://192.168.250.10:5443",
+    "namespace": "staging-ns"
+  }
+}
