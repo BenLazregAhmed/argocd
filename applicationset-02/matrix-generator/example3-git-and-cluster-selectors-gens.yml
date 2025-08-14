@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: matrix-generator-ex1
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: https://github.com/BenLazregAhmed/argocd.git
+              revision: main
+              files:
+                - path: applicationset-01/git-generator/cluster-config/**/config.json
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: '{{cluster.name}}'#prameter from git generator
+  template:
+    metadata:
+      name: '{{name}}-application'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/BenLazregAhmed/argocd.git
+        targetRevision: main
+        path: '{{cluster.path}}'#from git gen
+      destination:
+        server: '{{server}}'#from cluster gen
+        namespace: '{{metadata.labels.environment}}'#from cluster gen
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true

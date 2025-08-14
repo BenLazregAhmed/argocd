@@ -7,7 +7,7 @@ to get the server address and ca certificate of second cluster to add it to add-
 k3d kubeconfig get cluster-name
 to switch between clusters :
 kubectl config get-contexts : list all contexts
-kubectl config use-context CONTEXT_NAME
+kubectl config use-context k3d-second-cluster
 in the original cluster :
 kubectl apply -f add-cluster-and-tracking-strategies/add-cluster/manual/add-cluster.yml
 argocd cluster list
