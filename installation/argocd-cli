@@ -1,3 +1,4 @@
 argocd login <node-@ip>:<argocd-server-node-port> --insecure --grpc-web
-192.168.250.10:8086
-wjxTUlvwd5g3Unk5
+192.168.250.10:8085
+r4fWDa7Vt68amHXV
+%USERPROFILE%\.kube\config

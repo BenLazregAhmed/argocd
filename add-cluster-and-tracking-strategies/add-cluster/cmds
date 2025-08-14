@@ -1,0 +1,13 @@
+in external cluster :
+kubectl create sa new-cluster-sa
+kubectl create clusterrolebinding cluster-admin --clusterrole=cluster-admin --serviceaccount=default:new-cluster-sa
+kubectl auth can-i create pods --as system:serviceaccount:default:new-cluster-sa
+kubectl create token new-cluster-sa
+to get the server address and ca certificate of second cluster to add it to add-cluster.yml:
+k3d kubeconfig get cluster-name
+to switch between clusters :
+kubectl config get-contexts : list all contexts
+kubectl config use-context CONTEXT_NAME
+in the original cluster :
+kubectl apply -f add-cluster-and-tracking-strategies/add-cluster/manual/add-cluster.yml
+argocd cluster list
