@@ -1,0 +1,26 @@
+when a change occurs in the template section of the rollout the rollout controller detects that a new
+replicaset will be created so the controller uses the rollout strategy defined in spec.strategy to determine
+how the rollout is going to happen from old replicaset to new replicaset.
+blue green deployment :
+initially we have two services : active and preview that both points to the same rollout (application)
+using the label specified in selector block expl:
+selector :
+    app: blue-green
+when we decide to release a new version of the app we make a change in the template section of the rollout so
+a new replicaset gets created.Argo rollouts detects the new replicaset and points the preview service to it
+while the active service still pointing to the old one.But how ??
+Every replicaset have a uniq hash, argo rollout injects a selector into the services with the replicaset hash as value.
+expl:
+old rs hash: 12455fdfed7
+new rs hash: 1fef5fzd444
+active svc:
+selector :
+    app: blue-green
+    pod-template-hash: 12455fdfed7
+preview svc:
+selector :
+    app: blue-green
+    pod-template-hash: 1fef5fzd444
+So every service now points to a different replicaset.
+when we want to publish the second version we promote the rollout so the controller makes the selector in the active
+service points to the same replicaset hash as the preview service.

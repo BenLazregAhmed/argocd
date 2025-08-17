@@ -1,0 +1,3 @@
+kubectl argo rollouts dashboard
+kubectl argo rollouts promote blue-green-deployment
+kubectl argo rollouts abort blue-green-deployment
