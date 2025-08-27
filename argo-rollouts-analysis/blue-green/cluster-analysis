@@ -1,0 +1,14 @@
+we can use a crd called ClusterAnalysisTemplate if we want to share the same template across multiple namespaces
+we just need to change the kind from AnalysisTemplate to ClusterAnalysisTemplate
+and in the rollout :
+if its pre promotion add this :
+      prePromotionAnalysis:    #### cluster-pre-Promotion Analysis
+        templates:
+        - templateName: <templateName>
+          clusterScope: true
+if its post promotion add this :
+      postPromotionAnalysis:    #### cluster-post-Promotion Analysis
+        templates:
+        - templateName: <templateName>
+          clusterScope: true
+all other parameters stays the same for the template and the rollout

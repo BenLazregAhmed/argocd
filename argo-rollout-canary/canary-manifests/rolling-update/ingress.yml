@@ -1,9 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: blue-green-ingress
+  name: canary-rolling-update-ingress
 spec:
-  ingressClassName: nginx
   rules:
     - http:
         paths:
@@ -11,6 +10,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: rollout-bluegreen-active
+                name: rolling-update
                 port:
                   number: 5000

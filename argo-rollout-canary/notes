@@ -1,0 +1,11 @@
+Canary deployment :
+ways to use canary deployment :
+ Rolling Update :
+ -Max surge: the maximum number of pods that can be created above the desired number replicas during the update .
+             example : 5 replicas , max surge = 2 => max number of pods at any given time during update= 7
+ -Max Unavailable: the maximum number of pods that can be subtracted from the desired number replicas during the update .
+                   example : 5 replicas , max unavailable = 2 => min number of pods at any given time during update= 3
+ Set Weight :
+ - if we have 5 replicas for example and we set setWeight=30% ==> 30% of 5 = 1.5 so argo rollouts rounds the number up
+ so we have 2 replicas of new version . 100% -30% = 70% , 70% of 5 = 3.5 argo rollouts rounds up this number also==>
+ so we have 4 replicas of old version
